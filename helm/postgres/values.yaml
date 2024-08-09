@@ -136,6 +136,14 @@ instances:
           resources:
             requests:
               storage: 20Gi
+      - name: "tblspsaudit"
+        dataVolumeClaimSpec:
+          accessModes:
+            - 'ReadWriteOnce'
+          storageClassName: "local-path"
+          resources:
+            requests:
+              storage: 10Gi          
     resources:
         limits:
           cpu: "1000m"
