@@ -119,7 +119,7 @@ instanceReplicas: 1
 #           storage: 1Gi
 # instances: {}
 instances:
-  - name: instancema
+  - name: instancemat
     dataVolumeClaimSpec:
       accessModes:
         - 'ReadWriteOnce'
