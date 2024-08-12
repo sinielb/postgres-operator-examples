@@ -128,7 +128,7 @@ instances:
         requests:
           storage: 5Gi
     tablespaceVolumes:
-      - name: "tblsma"
+      - name: "tblsmat"
         dataVolumeClaimSpec:
           accessModes:
             - 'ReadWriteOnce'
