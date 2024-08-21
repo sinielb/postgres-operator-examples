@@ -183,7 +183,7 @@ patroni:
     synchronous_mode: true
     postgresql:
       parameters:
-        max_connections: 200
+        max_connections: 250
 # users sets any custom Postgres users and databases that they have  access to
 # as well as any permissions associated with the user account.
 # users: {}
