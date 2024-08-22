@@ -348,7 +348,7 @@ users:
 # service: {}
 
 service:
-  type: LoadBalancer
+  type: ClusterIP
 
 # imagePullPolicy sets the pull policy for all the images. This defaults to
 # the Kubernetes heuristic:
