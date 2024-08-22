@@ -123,7 +123,7 @@ instances:
     dataVolumeClaimSpec:
       accessModes:
         - 'ReadWriteOnce'
-      storageClassName: "local-path"
+      storageClassName: "storage-retain"
       resources:
         requests:
           storage: 5Gi
@@ -132,7 +132,7 @@ instances:
         dataVolumeClaimSpec:
           accessModes:
             - 'ReadWriteOnce'
-          storageClassName: "local-path"
+          storageClassName: "storage-retain"
           resources:
             requests:
               storage: 40Gi
@@ -140,7 +140,7 @@ instances:
         dataVolumeClaimSpec:
           accessModes:
             - 'ReadWriteOnce'
-          storageClassName: "local-path"
+          storageClassName: "storage-retain"
           resources:
             requests:
               storage: 15Gi
@@ -148,7 +148,7 @@ instances:
         dataVolumeClaimSpec:
           accessModes:
             - 'ReadWriteOnce'
-          storageClassName: "local-path"
+          storageClassName: "storage-retain"
           resources:
             requests:
               storage: 15Gi
@@ -156,7 +156,7 @@ instances:
         dataVolumeClaimSpec:
           accessModes:
             - 'ReadWriteOnce'
-          storageClassName: "local-path"
+          storageClassName: "storage-retain"
           resources:
             requests:
               storage: 15Gi
