@@ -123,7 +123,7 @@ instances:
     dataVolumeClaimSpec:
       accessModes:
         - 'ReadWriteOnce'
-      storageClassName: "local-path"
+      storageClassName: "storage-retain"
       resources:
         requests:
           storage: 5Gi
@@ -132,7 +132,7 @@ instances:
         dataVolumeClaimSpec:
           accessModes:
             - 'ReadWriteOnce'
-          storageClassName: "local-path"
+          storageClassName: "storage-retain"
           resources:
             requests:
               storage: 20Gi
@@ -140,7 +140,7 @@ instances:
         dataVolumeClaimSpec:
           accessModes:
             - 'ReadWriteOnce'
-          storageClassName: "local-path"
+          storageClassName: "storage-retain"
           resources:
             requests:
               storage: 10Gi          
@@ -332,7 +332,7 @@ users:
 # service: {}
 
 service:
-  type: LoadBalancer
+  type: ClusterIP
 
 # imagePullPolicy sets the pull policy for all the images. This defaults to
 # the Kubernetes heuristic:
