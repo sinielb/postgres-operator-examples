@@ -348,8 +348,8 @@ users:
 # service: {}
 
 service:
-#  type: ClusterIP
-  type: LoadBalancer
+  type: ClusterIP
+#  type: LoadBalancer
   
 
 # imagePullPolicy sets the pull policy for all the images. This defaults to
