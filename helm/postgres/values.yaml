@@ -119,14 +119,14 @@ instanceReplicas: 1
 #           storage: 1Gi
 # instances: {}
 instances:
-  - name: instancems
+  - name: instancemstest
     dataVolumeClaimSpec:
       accessModes:
         - 'ReadWriteOnce'
-      storageClassName: "storage-retain"
+      storageClassName: "storage-retain-with-node-test"
       resources:
         requests:
-          storage: 5Gi
+          storage: 1Gi
     tablespaceVolumes:
       - name: "tblsmslarge"
         dataVolumeClaimSpec:
@@ -135,35 +135,11 @@ instances:
           storageClassName: "storage-retain"
           resources:
             requests:
-              storage: 40Gi
-      - name: "tblsmssmall"
-        dataVolumeClaimSpec:
-          accessModes:
-            - 'ReadWriteOnce'
-          storageClassName: "storage-retain"
-          resources:
-            requests:
-              storage: 15Gi
-      - name: "tblsmssc"
-        dataVolumeClaimSpec:
-          accessModes:
-            - 'ReadWriteOnce'
-          storageClassName: "storage-retain"
-          resources:
-            requests:
-              storage: 15Gi
-      - name: "tblsmsaudit"
-        dataVolumeClaimSpec:
-          accessModes:
-            - 'ReadWriteOnce'
-          storageClassName: "storage-retain"
-          resources:
-            requests:
-              storage: 15Gi
+              storage: 5Gi
     resources:
         limits:
-          cpu: "2000m"
-          memory: "8Gi"
+          cpu: "500m"
+          memory: "1Gi"
 
 # port sets the port that Postgres listens on. Defaults to 5432.
 # port: 5432
@@ -190,7 +166,7 @@ patroni:
 users:
   - name: sgm-admin
     databases: 
-      - MS
+      - MSTEST
     options: "SUPERUSER"
 
 # dataSource specifies a data source for bootstrapping a Postgres cluster.
