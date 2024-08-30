@@ -120,6 +120,8 @@ instanceReplicas: 1
 # instances: {}
 instances:
   - name: instancemstest
+    nodeSelector:
+      database: postgresql
     dataVolumeClaimSpec:
       accessModes:
         - 'ReadWriteOnce'
