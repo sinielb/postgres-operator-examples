@@ -132,7 +132,7 @@ instances:
     dataVolumeClaimSpec:
       accessModes:
         - 'ReadWriteOnce'
-      storageClassName: "storage-retain-with-node-test"
+      storageClassName: "local-path"
       resources:
         requests:
           storage: 5Gi
@@ -141,14 +141,14 @@ instances:
         dataVolumeClaimSpec:
           accessModes:
             - 'ReadWriteOnce'
-          storageClassName: "storage-retain-with-node-test"
+          storageClassName: "local-path"
           resources:
             requests:
               storage: 10Gi
     resources:
         limits:
-          cpu: "500m"
-          memory: "2Gi"
+          cpu: "1000m"
+          memory: "4Gi"
 
 # port sets the port that Postgres listens on. Defaults to 5432.
 # port: 5432
