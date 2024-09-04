@@ -132,7 +132,7 @@ instances:
     dataVolumeClaimSpec:
       accessModes:
         - 'ReadWriteOnce'
-      storageClassName: "local-path"
+      storageClassName: "storage-retain-with-node-test"
       resources:
         requests:
           storage: 5Gi
@@ -141,7 +141,7 @@ instances:
         dataVolumeClaimSpec:
           accessModes:
             - 'ReadWriteOnce'
-          storageClassName: "local-path"
+          storageClassName: "storage-retain-with-node-test"
           resources:
             requests:
               storage: 10Gi
