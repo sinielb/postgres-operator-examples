@@ -120,28 +120,51 @@ instanceReplicas: 1
 # instances: {}
 instances:
   - name: instancemstest
-    nodeSelector:
-      database: postgresql
-    dataVolumeClaimSpec:
-      accessModes:
-        - 'ReadWriteOnce'
-      storageClassName: "storage-retain-with-node-test"
-      resources:
-        requests:
-          storage: 1Gi
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+              - co-sw-sgm-worker01.trilliant.idm
+        dataVolumeClaimSpec:
+          accessModes:
+          - 'ReadWriteOnce'
+          storageClassName: "storage-retain-with-node-w1"
+          resources:
+            requests:
+              storage: 35Gi
     tablespaceVolumes:
-      - name: "tblsmslarge"
+      - name: "tblsmstestlarge"
         dataVolumeClaimSpec:
           accessModes:
             - 'ReadWriteOnce'
-          storageClassName: "storage-retain"
+          storageClassName: "storage-retain-with-node-w1"
           resources:
             requests:
-              storage: 5Gi
+              storage: 40Gi      
+      - name: "tblsmstestsc"
+        dataVolumeClaimSpec:
+          accessModes:
+            - 'ReadWriteOnce'
+          storageClassName: "storage-retain-with-node-w1"
+          resources:
+            requests:
+              storage: 15Gi
+      - name: "tblsmstestaudit"
+        dataVolumeClaimSpec:
+          accessModes:
+            - 'ReadWriteOnce'
+          storageClassName: "storage-retain-with-node-w1"
+          resources:
+            requests:
+              storage: 15Gi
     resources:
         limits:
-          cpu: "500m"
-          memory: "1Gi"
+          cpu: "2000m"
+          memory: "8Gi"
 
 # port sets the port that Postgres listens on. Defaults to 5432.
 # port: 5432
@@ -168,7 +191,7 @@ patroni:
 users:
   - name: sgm-admin
     databases: 
-      - MSTEST
+      - MS
     options: "SUPERUSER"
 
 # dataSource specifies a data source for bootstrapping a Postgres cluster.
