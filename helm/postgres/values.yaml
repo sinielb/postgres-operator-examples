@@ -129,13 +129,13 @@ instances:
               operator: In
               values:
               - co-sw-sgm-worker01.trilliant.idm
-        dataVolumeClaimSpec:
-          accessModes:
-          - 'ReadWriteOnce'
-          storageClassName: "storage-retain-with-node-w1"
-          resources:
-            requests:
-              storage: 35Gi
+    dataVolumeClaimSpec:
+      accessModes:
+      - 'ReadWriteOnce'
+      storageClassName: "storage-retain-with-node-w1"
+      resources:
+        requests:
+          storage: 35Gi
     tablespaceVolumes:
       - name: "tblsmstestlarge"
         dataVolumeClaimSpec:
