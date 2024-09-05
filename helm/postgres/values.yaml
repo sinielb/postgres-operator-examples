@@ -119,35 +119,44 @@ instanceReplicas: 1
 #           storage: 1Gi
 # instances: {}
 instances:
-  - name: instanceps
+  - name: instancepstest
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+              - co-sw-sgm-worker03.trilliant.idm
     dataVolumeClaimSpec:
       accessModes:
         - 'ReadWriteOnce'
-      storageClassName: "storage-retain"
+      storageClassName: "storage-retain-with-node-test"
       resources:
         requests:
           storage: 5Gi
     tablespaceVolumes:
-      - name: "tblsps"
+      - name: "tblspstest"
         dataVolumeClaimSpec:
           accessModes:
             - 'ReadWriteOnce'
-          storageClassName: "storage-retain"
+          storageClassName: "storage-retain-with-node-test"
           resources:
             requests:
-              storage: 20Gi
+              storage: 15Gi
       - name: "tblspsaudit"
         dataVolumeClaimSpec:
           accessModes:
             - 'ReadWriteOnce'
-          storageClassName: "storage-retain"
+          storageClassName: "storage-retain-with-node-test"
           resources:
             requests:
               storage: 10Gi          
     resources:
         limits:
-          cpu: "1000m"
-          memory: "4Gi"
+          cpu: "500m"
+          memory: "2Gi"
 
 # port sets the port that Postgres listens on. Defaults to 5432.
 # port: 5432
