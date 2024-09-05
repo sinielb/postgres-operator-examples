@@ -132,7 +132,7 @@ instances:
     dataVolumeClaimSpec:
       accessModes:
         - 'ReadWriteOnce'
-      storageClassName: "storage-retain-with-node-test"
+      storageClassName: "storage-retain-with-node-w3"
       resources:
         requests:
           storage: 5Gi
@@ -141,7 +141,7 @@ instances:
         dataVolumeClaimSpec:
           accessModes:
             - 'ReadWriteOnce'
-          storageClassName: "storage-retain-with-node-test"
+          storageClassName: "storage-retain-with-node-w3"
           resources:
             requests:
               storage: 15Gi
@@ -149,7 +149,7 @@ instances:
         dataVolumeClaimSpec:
           accessModes:
             - 'ReadWriteOnce'
-          storageClassName: "storage-retain-with-node-test"
+          storageClassName: "storage-retain-with-node-w3"
           resources:
             requests:
               storage: 10Gi          
