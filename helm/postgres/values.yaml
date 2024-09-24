@@ -119,39 +119,35 @@ instanceReplicas: 1
 #           storage: 1Gi
 # instances: {}
 instances:
-  - name: instancerd
+  - name: instanceps
     dataVolumeClaimSpec:
       accessModes:
         - 'ReadWriteOnce'
-      storageClassName: "db-storage-retain"
+      storageClassName: "gp2"
       resources:
         requests:
-          storage: 20Gi
+          storage: 5Gi
     tablespaceVolumes:
-      - name: "tblsrd"
+      - name: "tblsps"
         dataVolumeClaimSpec:
           accessModes:
             - 'ReadWriteOnce'
-          storageClassName: "db-storage-retain"
+          storageClassName: "gp2"
           resources:
             requests:
-              storage: 30Gi
+              storage: 20Gi
+      - name: "tblspsaudit"
+        dataVolumeClaimSpec:
+          accessModes:
+            - 'ReadWriteOnce'
+          storageClassName: "gp2"
+          resources:
+            requests:
+              storage: 10Gi          
     resources:
-        request:
-          cpu: "500m"
-          memory: "512Gi"
         limits:
           cpu: "1000m"
-          memory: "2Gi"
-    affinity:
-      nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-            - matchExpressions:
-                - key: application
-                  operator: In
-                  values:
-                    - storage
+          memory: "4Gi"
 
 # port sets the port that Postgres listens on. Defaults to 5432.
 # port: 5432
@@ -172,14 +168,13 @@ patroni:
     postgresql:
       parameters:
         max_connections: 200
-        listen_addresses: "*"
 # users sets any custom Postgres users and databases that they have  access to
 # as well as any permissions associated with the user account.
 # users: {}
 users:
   - name: sgm-admin
     databases: 
-      - RD
+      - PS
     options: "SUPERUSER"
 
 # dataSource specifies a data source for bootstrapping a Postgres cluster.
@@ -337,7 +332,7 @@ users:
 # service: {}
 
 service:
-  type: ClusterIP
+  type: LoadBalancer
 
 # imagePullPolicy sets the pull policy for all the images. This defaults to
 # the Kubernetes heuristic:
