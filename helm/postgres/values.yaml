@@ -119,7 +119,7 @@ instanceReplicas: 1
 #           storage: 1Gi
 # instances: {}
 instances:
-  - name: instancerd
+  - name: instancems
     dataVolumeClaimSpec:
       accessModes:
         - 'ReadWriteOnce'
@@ -128,21 +128,38 @@ instances:
         requests:
           storage: 20Gi
     tablespaceVolumes:
-      - name: "tblsrd"
+      - name: "tblsmslarge"
         dataVolumeClaimSpec:
           accessModes:
             - 'ReadWriteOnce'
           storageClassName: "db-storage-retain"
           resources:
             requests:
-              storage: 30Gi
+              storage: 50Gi
+      - name: "tblsmssc"
+        dataVolumeClaimSpec:
+          accessModes:
+            - 'ReadWriteOnce'
+          storageClassName: "db-storage-retain"
+          resources:
+            requests:
+              storage: 10Gi
+      - name: "tblsmsaudit"
+        dataVolumeClaimSpec:
+          accessModes:
+            - 'ReadWriteOnce'
+          storageClassName: "db-storage-retain"
+          resources:
+            requests:
+              storage: 20Gi     
     resources:
         request:
-          cpu: "500m"
-          memory: "512Gi"
+          cpu: "2000m"
+          memory: "8Gi"
         limits:
-          cpu: "1000m"
-          memory: "2Gi"
+          cpu: "3500m"
+          memory: "14Gi"
+        
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
@@ -179,7 +196,7 @@ patroni:
 users:
   - name: sgm-admin
     databases: 
-      - RD
+      - MS
     options: "SUPERUSER"
 
 # dataSource specifies a data source for bootstrapping a Postgres cluster.
