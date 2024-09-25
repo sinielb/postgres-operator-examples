@@ -119,7 +119,7 @@ instanceReplicas: 1
 #           storage: 1Gi
 # instances: {}
 instances:
-  - name: instancepg
+  - name: instancefb
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
@@ -128,7 +128,7 @@ instances:
             - key: kubernetes.io/hostname
               operator: In
               values:
-              - co-sw-sgm-worker04.trilliant.idm
+              - co-sw-sgm-worker02.trilliant.idm
     dataVolumeClaimSpec:
       accessModes:
         - 'ReadWriteOnce'
@@ -137,7 +137,7 @@ instances:
         requests:
           storage: 5Gi
     tablespaceVolumes:
-      - name: "tblspg"
+      - name: "tblsfb"
         dataVolumeClaimSpec:
           accessModes:
             - 'ReadWriteOnce'
@@ -176,7 +176,7 @@ patroni:
 users:
   - name: sgm-admin
     databases: 
-      - PG
+      - FB
       #- KEYCLOAK
     options: "SUPERUSER"
 
@@ -360,4 +360,4 @@ service:
 # that uses a SecurityContextConstraint. This usually does not need to be set,
 # but you may want to explicitly set it to "false" when using an SCC like
 # "anyuid"
-# openshift: false
+# opensFBft: false
