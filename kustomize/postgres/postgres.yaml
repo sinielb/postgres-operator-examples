@@ -6,14 +6,23 @@ spec:
   image: registry.developers.crunchydata.com/crunchydata/crunchy-postgres:ubi8-16.3-1
   postgresVersion: 16
   instances:
-    - name: instance1
+    - name: instancepg
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/hostname
+                operator: In
+                values:
+                - co-sw-sgm-worker04.trilliant.idm
       dataVolumeClaimSpec:
         accessModes:
-        - "ReadWriteOnce"
-        storageClassName: "storage-retain"
+          - 'ReadWriteOnce'
+        storageClassName: "storage-retain-with-node-test"
         resources:
           requests:
-            storage: 1Gi
+            storage: 3Gi
   backups:
     pgbackrest:
       image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbackrest:ubi8-2.51-1
@@ -23,6 +32,7 @@ spec:
           volumeClaimSpec:
             accessModes:
             - "ReadWriteOnce"
+            storageClassName: "storage-retain-with-node-test"
             resources:
               requests:
                 storage: 1Gi
