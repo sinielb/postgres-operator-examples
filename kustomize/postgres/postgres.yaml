@@ -7,10 +7,19 @@ spec:
   postgresVersion: 16
   instances:
     - name: instancepg
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/hostname
+                operator: In
+                values:
+                - co-sw-sgm-worker04.trilliant.idm
       dataVolumeClaimSpec:
         accessModes:
           - 'ReadWriteOnce'
-        storageClassName: "storage-retain"
+        storageClassName: "storage-retain-with-node-test"
         resources:
           requests:
             storage: 3Gi
@@ -25,7 +34,7 @@ spec:
             - "ReadWriteOnce"
             resources:
               requests:
-                storage: 1Gi
+                storage: 2Gi
   monitoring:
     pgmonitor:
       exporter:
