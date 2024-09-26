@@ -32,7 +32,6 @@ spec:
           volumeClaimSpec:
             accessModes:
             - "ReadWriteOnce"
-            storageClassName: "storage-retain-with-node-test"
             resources:
               requests:
                 storage: 1Gi
