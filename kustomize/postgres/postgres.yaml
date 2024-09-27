@@ -32,7 +32,7 @@ spec:
           volumeClaimSpec:
             accessModes:
             - "ReadWriteOnce"
-            storageClassName: "storage-retain-with-node-test"
+            storageClassName: "storage-pg-monitor"
             resources:
               requests:
                 storage: 2Gi
